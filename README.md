@@ -2,7 +2,7 @@
 
 ## Styles
 
-In this task Bootstrap (5) CSS framework is used with small injection of custom styling. In some places I override Bootstrap classes to align them with the design
+In this task Bootstrap (5) CSS framework is used with small injection of custom styling. Custom CSS class names are following such name convention: dj- prefix in all such classes. In some places I override Bootstrap classes to align them with the design
 
 ## Scripts
 
