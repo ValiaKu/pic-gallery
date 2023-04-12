@@ -113,6 +113,7 @@
 
       for (let i = 0; i < showMoreButtons.length; i++) {
         showMoreButtons[i].addEventListener("click", function (e) {
+          e.preventDefault();
           //Get text in the current block and toggle show hide full text
           let textBlock = showMoreButtons[i].previousElementSibling;
           textBlock.classList.toggle("dj-full-text");
@@ -193,9 +194,11 @@
   const switcherToLightTheme = document.querySelector(".dj-btn-to-light");
 
   switcherToDarkTheme.addEventListener("click", function (e) {
+    e.preventDefault();
     page.classList.add("dark-theme");
   });
   switcherToLightTheme.addEventListener("click", function (e) {
+    e.preventDefault();
     page.classList.remove("dark-theme");
   });
 })();
