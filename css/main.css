@@ -90,7 +90,7 @@ h1 {
   font-weight: 700;
   font-size: 40px;
 }
-h1 span {
+h1 > span {
   color: var(--secondary-text-color);
   font-weight: 700;
   font-size: 14px;

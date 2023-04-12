@@ -117,6 +117,12 @@
 
     let allCardsSet = document.querySelectorAll(".card");
 
+    //Calculate number of loaded cards on the page  and show it under title
+    const numberOfCardsPlaceholder = document.getElementById("numberOfCards");
+    let numberOfCards = allCardsSet.length;
+    numberOfCardsPlaceholder.innerHTML = numberOfCards;
+
+    //Get specific card inside which we toggle Show/Hide button
     for (let m = 0; m < allCardsSet.length; m++) {
       let createSelectorName = ".card-" + m + " .link-" + m;
       let oneCard = document.querySelectorAll(createSelectorName);
