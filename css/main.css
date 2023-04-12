@@ -316,7 +316,15 @@ h1 span {
     text-align: center;
   }
 }
-
+@media (max-width: 460px) {
+  .dj-header {
+    flex-direction: column;
+    margin-bottom: calc(var(--base-size) * 2);
+  }
+  .dj-switcher {
+    width: 100%;
+  }
+}
 /***
   Loader (for pics)
 ***/
