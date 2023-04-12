@@ -53,7 +53,7 @@
 
       //Markup for separate card
       imgWrapper.innerHTML = `        
-        <div class="card">
+        <div class="card card-${image.id}" id="cardID-${image.id}">
           <img
             src="${image.download_url}"
             class="dj-card-img-top"
@@ -61,9 +61,9 @@
           />
           <div class="card-body">
             <h2 class="card-title">${image.id} ${image.author}</h2>
-            <p class="card-text">${texts[randomIndexText]}
+            <p class="card-text text_${image.id}" >${texts[randomIndexText]}
             </p>
-            <a href="" class="dj-link-more">Show more...</a>
+            <a href="" class="dj-link-more link-${image.id}">Show more...</a>
             <div class="dj-buttons-wrapper">
               <a href="#" class="btn btn-primary">Save to collection</a>
               <a href="#" class="btn dj-btn-outline">Share</a>
@@ -104,34 +104,35 @@
         }
       }
 
-      /****
-       * Toggle text functionality
-       */
-
-      //Get set of all 'Show more' buttons on the page
-      let showMoreButtons = document.getElementsByClassName("dj-link-more");
-
-      for (let i = 0; i < showMoreButtons.length; i++) {
-        showMoreButtons[i].addEventListener("click", function (e) {
-          e.preventDefault();
-          //Get text in the current block and toggle show hide full text
-          let textBlock = showMoreButtons[i].previousElementSibling;
-          textBlock.classList.toggle("dj-full-text");
-
-          //Toggle text inside 'show' button
-          showMoreButtons[i].innerHTML =
-            showMoreButtons[i].innerHTML == "Show more..."
-              ? "...Show less"
-              : "Show more...";
-        });
-      }
-
       imgContainer.appendChild(imgWrapper);
     });
   };
 
   const hideLoader = () => {
     loader.classList.remove("show");
+
+    /****
+     * Toggle text functionality - located when we have all cards loaded and stop scrolling
+     */
+
+    let allCardsSet = document.querySelectorAll(".card");
+
+    for (let m = 0; m < allCardsSet.length; m++) {
+      let createSelectorName = ".card-" + m + " .link-" + m;
+      let oneCard = document.querySelectorAll(createSelectorName);
+
+      oneCard[0].addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Get the parent element with collapsible text
+        let textBlock = this.previousElementSibling;
+        textBlock.classList.toggle("dj-full-text");
+
+        // Toggle text in the button depending on state
+        this.innerHTML =
+          this.innerHTML == "Show more..." ? "...Show less" : "Show more...";
+      });
+    }
   };
 
   const showLoader = () => {
@@ -197,6 +198,7 @@
     e.preventDefault();
     page.classList.add("dark-theme");
   });
+
   switcherToLightTheme.addEventListener("click", function (e) {
     e.preventDefault();
     page.classList.remove("dark-theme");
