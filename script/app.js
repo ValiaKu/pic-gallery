@@ -53,7 +53,7 @@
 
       //Markup for separate card
       imgWrapper.innerHTML = `        
-        <div class="card card-${image.id}" id="cardID-${image.id}">
+        <div class="card card-${image.id}">
           <img
             src="${image.download_url}"
             class="dj-card-img-top"
@@ -61,7 +61,7 @@
           />
           <div class="card-body">
             <h2 class="card-title">${image.id} ${image.author}</h2>
-            <p class="card-text text_${image.id}" >${texts[randomIndexText]}
+            <p class="card-text">${texts[randomIndexText]}
             </p>
             <a href="" class="dj-link-more link-${image.id}">Show more...</a>
             <div class="dj-buttons-wrapper">
@@ -112,7 +112,7 @@
     loader.classList.remove("show");
 
     /****
-     * Toggle text functionality - located when we have all cards loaded and stop scrolling
+     * Toggle text functionality - moved here, because  we need all cards loaded on the moment of  stop scrolling
      */
 
     let allCardsSet = document.querySelectorAll(".card");
